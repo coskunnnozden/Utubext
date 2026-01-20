@@ -1,0 +1,35 @@
+
+{
+  "manifest_version": 3,
+  "name": "utubext - Market Intelligence",
+  "version": "2.9.0",
+  "description": "YouTube Arbitraj Dedektörü: Düşük Rekabetli ve Yüksek Trendli içerikleri otomatik bulur.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "utubext"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'unsafe-eval' https://esm.sh https://www.gstatic.com; object-src 'self';"
+  },
+  "host_permissions": [
+    "https://*.youtube.com/*",
+    "https://esm.sh/*",
+    "https://www.gstatic.com/*"
+  ]
+}
